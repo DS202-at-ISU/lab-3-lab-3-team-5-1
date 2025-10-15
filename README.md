@@ -86,7 +86,7 @@ library(tidyverse)
 
     ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
     ## ✔ dplyr     1.1.4     ✔ readr     2.1.5
-    ## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+    ## ✔ forcats   1.0.1     ✔ stringr   1.5.1
     ## ✔ ggplot2   3.5.2     ✔ tibble    3.3.0
     ## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
     ## ✔ purrr     1.1.0     
@@ -229,3 +229,66 @@ only 64 Avengers that have died at least one time.
 
 Upload your changes to the repository. Discuss and refine answers as a
 team.
+
+## Individually: Sarah Yao
+
+For each team member, copy this part of the report.
+
+Each team member picks one of the statements in the FiveThirtyEight
+[analysis](https://fivethirtyeight.com/features/avengers-death-comics-age-of-ultron/)
+and fact checks it based on the data. Use dplyr functionality whenever
+possible.
+
+### FiveThirtyEight Statement
+
+> Quote the statement you are planning to fact-check.
+
+“I counted 89 total deaths — some unlucky Avengers7 are basically Meat
+Loaf with an E-ZPass — and on 57 occasions the individual made a
+comeback.”
+
+### Include the code
+
+Make sure to include the code to derive the (numeric) fact for the
+statement
+
+``` r
+# total number of deaths recorded
+total_deaths <- deaths |>
+  filter((Death) == "YES") |>
+  summarise(total_deaths = n())
+
+# total number of returns recorded
+total_returns <- returns |>
+  filter((Return) == "YES") |>
+  summarise(total_returns = n())
+
+total_deaths
+```
+
+    ## # A tibble: 1 × 1
+    ##   total_deaths
+    ##          <int>
+    ## 1           89
+
+``` r
+total_returns
+```
+
+    ## # A tibble: 1 × 1
+    ##   total_returns
+    ##           <int>
+    ## 1            57
+
+### Include your answer
+
+Include at least one sentence discussing the result of your
+fact-checking endeavor.
+
+According to the dataset, there are 89 total recorded deaths and 57
+returns, which matches the numbers reported in the FiveThirtyEight
+analysis.
+
+This confirms the author’s claim: Avengers have died 89 times in total
+across all comic appearances, and in 57 of those cases, they eventually
+came back to life.
