@@ -112,7 +112,25 @@ deaths <- av |>
     Time = parse_number(Time)
   ) |>
   filter(Death != "")
+deaths
+```
 
+    ## # A tibble: 194 × 4
+    ##    URL                                                    Name.Alias  Time Death
+    ##    <chr>                                                  <chr>      <dbl> <chr>
+    ##  1 http://marvel.wikia.com/Henry_Pym_(Earth-616)          "Henry Jo…     1 YES  
+    ##  2 http://marvel.wikia.com/Janet_van_Dyne_(Earth-616)     "Janet va…     1 YES  
+    ##  3 http://marvel.wikia.com/Anthony_Stark_(Earth-616)      "Anthony …     1 YES  
+    ##  4 http://marvel.wikia.com/Robert_Bruce_Banner_(Earth-61… "Robert B…     1 YES  
+    ##  5 http://marvel.wikia.com/Thor_Odinson_(Earth-616)       "Thor Odi…     1 YES  
+    ##  6 http://marvel.wikia.com/Thor_Odinson_(Earth-616)       "Thor Odi…     2 YES  
+    ##  7 http://marvel.wikia.com/Richard_Jones_(Earth-616)      "Richard …     1 NO   
+    ##  8 http://marvel.wikia.com/Steven_Rogers_(Earth-616)      "Steven R…     1 YES  
+    ##  9 http://marvel.wikia.com/Clint_Barton_(Earth-616)       "Clinton …     1 YES  
+    ## 10 http://marvel.wikia.com/Clint_Barton_(Earth-616)       "Clinton …     2 YES  
+    ## # ℹ 184 more rows
+
+``` r
 #View(deaths)
 
 #reshape return data
@@ -131,7 +149,25 @@ returns <- av |>
     Time = parse_number(Time)
   ) |>
   filter(Return != "")
+returns
+```
 
+    ## # A tibble: 89 × 4
+    ##    URL                                                   Name.Alias  Time Return
+    ##    <chr>                                                 <chr>      <dbl> <chr> 
+    ##  1 http://marvel.wikia.com/Henry_Pym_(Earth-616)         "Henry Jo…     1 NO    
+    ##  2 http://marvel.wikia.com/Janet_van_Dyne_(Earth-616)    "Janet va…     1 YES   
+    ##  3 http://marvel.wikia.com/Anthony_Stark_(Earth-616)     "Anthony …     1 YES   
+    ##  4 http://marvel.wikia.com/Robert_Bruce_Banner_(Earth-6… "Robert B…     1 YES   
+    ##  5 http://marvel.wikia.com/Thor_Odinson_(Earth-616)      "Thor Odi…     1 YES   
+    ##  6 http://marvel.wikia.com/Thor_Odinson_(Earth-616)      "Thor Odi…     2 NO    
+    ##  7 http://marvel.wikia.com/Steven_Rogers_(Earth-616)     "Steven R…     1 YES   
+    ##  8 http://marvel.wikia.com/Clint_Barton_(Earth-616)      "Clinton …     1 YES   
+    ##  9 http://marvel.wikia.com/Clint_Barton_(Earth-616)      "Clinton …     2 YES   
+    ## 10 http://marvel.wikia.com/Pietro_Maximoff_(Earth-616)   "Pietro M…     1 YES   
+    ## # ℹ 79 more rows
+
+``` r
 #View(returns)
 
 
@@ -167,6 +203,29 @@ statement
 
 Include at least one sentence discussing the result of your
 fact-checking endeavor.
+
+David’s Work: “Out of 173 listed Avengers, my analysis found that 69 had
+died at least one time after they joined the team.”
+
+``` r
+died_at_least_once <- deaths |>
+  filter(Death == "YES") |>
+  distinct(Name.Alias) |>
+  nrow()
+died_at_least_once
+```
+
+    ## [1] 64
+
+``` r
+#View(died_at_least_once)
+```
+
+Based on my analysis, I filtered for avengers that have died at least
+one time and selected distinct rows based on their names. The output of
+this new dataframe is 64, which is not equal to the 69 figure that they
+got, so I don’t believe their analysis was correct as there was actually
+only 64 Avengers that have died at least one time.
 
 Upload your changes to the repository. Discuss and refine answers as a
 team.
