@@ -52,7 +52,7 @@ deaths <- av |>
     Time = parse_number(Time)
   ) |>
   filter(Death != "")
-
+deaths
 #View(deaths)
 
 #reshape return data
@@ -71,7 +71,7 @@ returns <- av |>
     Time = parse_number(Time)
   ) |>
   filter(Return != "")
-
+returns
 #View(returns)
 
 
