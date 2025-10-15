@@ -218,7 +218,7 @@ died_at_least_once
     ## [1] 64
 
 ``` r
-View(died_at_least_once)
+#View(died_at_least_once)
 ```
 
 Based on my analysis, I filtered for avengers that have died at least

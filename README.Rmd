@@ -106,7 +106,7 @@ died_at_least_once <- deaths |>
   distinct(Name.Alias) |>
   nrow()
 died_at_least_once
-View(died_at_least_once)
+#View(died_at_least_once)
 ```
 
 Based on my analysis, I filtered for avengers that have died at least one time and selected distinct rows based on their names. The output of this new dataframe is 64, which is not equal to the 69 figure that they got, so I don't believe their analysis was correct as there was actually only 64 Avengers that have died at least one time.
