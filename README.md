@@ -87,7 +87,7 @@ library(tidyverse)
     ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
     ## ✔ dplyr     1.1.4     ✔ readr     2.1.5
     ## ✔ forcats   1.0.0     ✔ stringr   1.5.1
-    ## ✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+    ## ✔ ggplot2   4.0.0     ✔ tibble    3.3.0
     ## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
     ## ✔ purrr     1.1.0     
     ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -220,6 +220,73 @@ died_at_least_once
 ``` r
 #View(died_at_least_once)
 ```
+
+Isabel’s Work: “I counted 89 total deaths — some unlucky Avengers7 are
+basically Meat Loaf with an E-ZPass — and on 57 occasions the individual
+made a comeback.”
+
+``` r
+maxdeaths <- deaths %>% group_by(
+  URL, Death
+) %>% 
+  summarise(
+    max_time = max(Time)
+  ) %>% 
+  ungroup() %>% 
+  count(Death, max_time)
+```
+
+    ## `summarise()` has grouped output by 'URL'. You can override using the `.groups`
+    ## argument.
+
+``` r
+total_deaths <- 1 * 53 + 2 * 14 + 3 + 5
+total_deaths
+```
+
+    ## [1] 89
+
+``` r
+maxreturns <- returns %>% group_by(
+  URL, Return
+) %>% 
+  summarise(
+    max_time = max(Time)
+  ) %>% 
+  ungroup() %>% 
+  count(Return, max_time)
+```
+
+    ## `summarise()` has grouped output by 'URL'. You can override using the `.groups`
+    ## argument.
+
+``` r
+maxreturns
+```
+
+    ## # A tibble: 6 × 3
+    ##   Return max_time     n
+    ##   <chr>     <dbl> <int>
+    ## 1 NO            1    23
+    ## 2 NO            2     8
+    ## 3 NO            3     1
+    ## 4 YES           1    38
+    ## 5 YES           2     7
+    ## 6 YES           5     1
+
+``` r
+av %>% 
+  filter(Death1 == "YES", Return1 == "YES") %>% nrow()
+```
+
+    ## [1] 46
+
+``` r
+Comebacks <- 38 + 14 + 5
+Comebacks
+```
+
+    ## [1] 57
 
 Based on my analysis, I filtered for avengers that have died at least
 one time and selected distinct rows based on their names. The output of
