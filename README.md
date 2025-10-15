@@ -1,4 +1,3 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/LsTaLPbx)
 
 <!-- README.md is generated from README.Rmd. Please edit the README.Rmd file -->
 
@@ -66,6 +65,10 @@ head(av)
     ## 5                                                      Dies in Fear Itself brought back because that's kind of the whole point. Second death in Time Runs Out has not yet returned
     ## 6                                                                                                                                                                             <NA>
 
+``` r
+#View(av)
+```
+
 Get the data into a format where the five columns for Death\[1-5\] are
 replaced by two columns: Time, and Death. Time should be a number
 between 1 and 5 (look into the function `parse_number`); Death is a
@@ -76,6 +79,71 @@ Similarly, deal with the returns of characters.
 
 Based on these datasets calculate the average number of deaths an
 Avenger suffers.
+
+``` r
+library(tidyverse)
+```
+
+    ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+    ## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+    ## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+    ## ✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+    ## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+    ## ✔ purrr     1.1.0     
+    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+    ## ✖ dplyr::filter() masks stats::filter()
+    ## ✖ dplyr::lag()    masks stats::lag()
+    ## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+
+``` r
+#reshape deaths data
+deaths <- av |> 
+  select(
+    URL,
+    Name.Alias,
+    starts_with("Death")
+  ) |> 
+  pivot_longer(
+    Death1:Death5,
+    names_to = "Time",
+    values_to = "Death"
+  ) |>
+  mutate(
+    Time = parse_number(Time)
+  ) |>
+  filter(Death != "")
+
+#View(deaths)
+
+#reshape return data
+returns <- av |> 
+  select(
+    URL,
+    Name.Alias,
+    starts_with("Return")
+  ) |> 
+  pivot_longer(
+    Return1:Return5,
+    names_to = "Time",
+    values_to = "Return"
+  ) |>
+  mutate(
+    Time = parse_number(Time)
+  ) |>
+  filter(Return != "")
+
+#View(returns)
+
+
+library(dplyr)
+deaths |>
+  summarize(mean(Time))
+```
+
+    ## # A tibble: 1 × 1
+    ##   `mean(Time)`
+    ##          <dbl>
+    ## 1         1.14
 
 ## Individually
 
@@ -99,6 +167,29 @@ statement
 
 Include at least one sentence discussing the result of your
 fact-checking endeavor.
+
+David’s Work: “Out of 173 listed Avengers, my analysis found that 69 had
+died at least one time after they joined the team.”
+
+``` r
+died_at_least_once <- deaths |>
+  filter(Death == "YES") |>
+  distinct(Name.Alias) |>
+  nrow()
+died_at_least_once
+```
+
+    ## [1] 64
+
+``` r
+View(died_at_least_once)
+```
+
+Based on my analysis, I filtered for avengers that have died at least
+one time and selected distinct rows based on their names. The output of
+this new dataframe is 64, which is not equal to the 69 figure that they
+got, so I don’t believe their analysis was correct as there was actually
+only 64 Avengers that have died at least one time.
 
 Upload your changes to the repository. Discuss and refine answers as a
 team.

@@ -98,4 +98,17 @@ Make sure to include the code to derive the (numeric) fact for the statement
 
 Include at least one sentence discussing the result of your fact-checking endeavor.
 
+David's Work:
+"Out of 173 listed Avengers, my analysis found that 69 had died at least one time after they joined the team."
+```{r}
+died_at_least_once <- deaths |>
+  filter(Death == "YES") |>
+  distinct(Name.Alias) |>
+  nrow()
+died_at_least_once
+View(died_at_least_once)
+```
+
+Based on my analysis, I filtered for avengers that have died at least one time and selected distinct rows based on their names. The output of this new dataframe is 64, which is not equal to the 69 figure that they got, so I don't believe their analysis was correct as there was actually only 64 Avengers that have died at least one time.
+
 Upload your changes to the repository. Discuss and refine answers as a team.
