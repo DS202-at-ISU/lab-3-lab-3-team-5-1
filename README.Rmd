@@ -132,9 +132,6 @@ x
 
 I filtered the returns dataframe for any avenger's first death. Then I filtered for how many of those avengers were revived after that first death. By dividing those revived by the total who died, I found the revival rate was 2/3 which validates the claim in the article.
 
-Upload your changes to the repository. Discuss and refine answers as a team.
-
-
 ## Individually: Sarah Yao
 
 For each team member, copy this part of the report.
@@ -172,6 +169,6 @@ total_returns
 
 Include at least one sentence discussing the result of your fact-checking endeavor.
 
-According to the dataset, there are 89 total recorded deaths and 57 returns, which  matches the numbers reported in the FiveThirtyEight analysis.
+According to the dataset, there are 89 total recorded deaths and 57 returns, which matches the numbers reported in the FiveThirtyEight analysis.
 
 This confirms the author’s claim: Avengers have died 89 times in total across all comic appearances, and in 57 of those cases, they eventually came back to life.
