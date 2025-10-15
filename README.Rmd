@@ -108,6 +108,8 @@ died_at_least_once <- deaths |>
 died_at_least_once
 #View(died_at_least_once)
 ```
+Based on my analysis, I filtered for avengers that have died at least one time and selected distinct rows based on their names. The output of this new dataframe is 64, which is not equal to the 69 figure that they got, so I don't believe their analysis was correct as there was actually only 64 Avengers that have died at least one time.
+
 
 Isabel's Work:
 "I counted 89 total deaths — some unlucky Avengers7 are basically Meat Loaf with an E-ZPass — and on 57 occasions the individual made a comeback."
@@ -142,10 +144,5 @@ av %>%
 Comebacks <- 38 + 14 + 5
 Comebacks
 ```
-
-
-
-
-Based on my analysis, I filtered for avengers that have died at least one time and selected distinct rows based on their names. The output of this new dataframe is 64, which is not equal to the 69 figure that they got, so I don't believe their analysis was correct as there was actually only 64 Avengers that have died at least one time.
 
 Upload your changes to the repository. Discuss and refine answers as a team.
