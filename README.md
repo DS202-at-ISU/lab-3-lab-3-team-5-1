@@ -327,6 +327,11 @@ total_returns
     ##           <int>
     ## 1            57
 
+Filtered the deaths and returns to include onlu rows where the column
+value is “YES.” Then counted the rows to give the total number of deaths
+and returns respectively. The code proves the statement above to be
+correct.
+
 #### Isabel’s Work:
 
 “I counted 89 total deaths — some unlucky Avengers7 are basically Meat
