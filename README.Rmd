@@ -145,6 +145,8 @@ Comebacks <- 38 + 14 + 5
 Comebacks
 ```
 
-Upload your changes to the repository. Discuss and refine answers as a team.
+Here, I summarized the max_times of death and returns for each url, then manually counted each combination. Finally, I filtered the dataset to find rows where both a death and return occured,identifying comeback cases. This process proved that the sentence above is correct. 
 
-some random change
+
+
+Upload your changes to the repository. Discuss and refine answers as a team.

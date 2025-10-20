@@ -221,6 +221,12 @@ died_at_least_once
 #View(died_at_least_once)
 ```
 
+Based on my analysis, I filtered for avengers that have died at least
+one time and selected distinct rows based on their names. The output of
+this new dataframe is 64, which is not equal to the 69 figure that they
+got, so I don’t believe their analysis was correct as there was actually
+only 64 Avengers that have died at least one time.
+
 Isabel’s Work: “I counted 89 total deaths — some unlucky Avengers7 are
 basically Meat Loaf with an E-ZPass — and on 57 occasions the individual
 made a comeback.”
@@ -288,11 +294,10 @@ Comebacks
 
     ## [1] 57
 
-Based on my analysis, I filtered for avengers that have died at least
-one time and selected distinct rows based on their names. The output of
-this new dataframe is 64, which is not equal to the 69 figure that they
-got, so I don’t believe their analysis was correct as there was actually
-only 64 Avengers that have died at least one time.
+Here, I summarized the max_times of death and returns for each url, then
+manually counted each combination. Finally, I filtered the dataset to
+find rows where both a death and return occured,identifying comeback
+cases. This process proved that the sentence above is correct.
 
 Upload your changes to the repository. Discuss and refine answers as a
 team.
