@@ -204,8 +204,10 @@ statement
 Include at least one sentence discussing the result of your
 fact-checking endeavor.
 
-David’s Work: “Out of 173 listed Avengers, my analysis found that 69 had
-died at least one time after they joined the team.”
+#### David’s Work:
+
+“Out of 173 listed Avengers, my analysis found that 69 had died at least
+one time after they joined the team.”
 
 ``` r
 died_at_least_once <- deaths |>
@@ -227,9 +229,109 @@ this new dataframe is 64, which is not equal to the 69 figure that they
 got, so I don’t believe their analysis was correct as there was actually
 only 64 Avengers that have died at least one time.
 
-Isabel’s Work: “I counted 89 total deaths — some unlucky Avengers7 are
-basically Meat Loaf with an E-ZPass — and on 57 occasions the individual
-made a comeback.”
+#### Sebastian’s Work:
+
+“There’s a 2-in-3 chance that a member of the Avengers returned from
+their first stint in the afterlife…”
+
+``` r
+Died_once <- 
+  returns |>
+  filter( Time == 1) |>
+   summarize(Return) 
+```
+
+    ## Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in
+    ## dplyr 1.1.0.
+    ## ℹ Please use `reframe()` instead.
+    ## ℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`
+    ##   always returns an ungrouped data frame and adjust accordingly.
+    ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+    ## generated.
+
+``` r
+#Died_once
+
+count <- Died_once |> nrow()
+Revived <- Died_once |> filter( Return == "YES") |>
+  summarize(Return) |> nrow()
+```
+
+    ## Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in
+    ## dplyr 1.1.0.
+    ## ℹ Please use `reframe()` instead.
+    ## ℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`
+    ##   always returns an ungrouped data frame and adjust accordingly.
+    ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+    ## generated.
+
+``` r
+x = Revived/count 
+x
+```
+
+    ## [1] 0.6666667
+
+I filtered the returns dataframe for any avenger’s first death. Then I
+filtered for how many of those avengers were revived after that first
+death. By dividing those revived by the total who died, I found the
+revival rate was 2/3 which validates the claim in the article.
+
+#### Sarah Yao
+
+For each team member, copy this part of the report.
+
+Each team member picks one of the statements in the FiveThirtyEight
+[analysis](https://fivethirtyeight.com/features/avengers-death-comics-age-of-ultron/)
+and fact checks it based on the data. Use dplyr functionality whenever
+possible.
+
+##### FiveThirtyEight Statement
+
+> Quote the statement you are planning to fact-check.
+
+“I counted 89 total deaths — some unlucky Avengers7 are basically Meat
+Loaf with an E-ZPass — and on 57 occasions the individual made a
+comeback.”
+
+##### Include the code
+
+Make sure to include the code to derive the (numeric) fact for the
+statement
+
+``` r
+# total number of deaths recorded
+total_deaths <- deaths |>
+  filter((Death) == "YES") |>
+  summarise(total_deaths = n())
+
+# total number of returns recorded
+total_returns <- returns |>
+  filter((Return) == "YES") |>
+  summarise(total_returns = n())
+
+total_deaths
+```
+
+    ## # A tibble: 1 × 1
+    ##   total_deaths
+    ##          <int>
+    ## 1           89
+
+``` r
+total_returns
+```
+
+    ## # A tibble: 1 × 1
+    ##   total_returns
+    ##           <int>
+    ## 1            57
+
+#### Isabel’s Work:
+
+“I counted 89 total deaths — some unlucky Avengers7 are basically Meat
+Loaf with an E-ZPass — and on 57 occasions the individual made a
+comeback.”
 
 ``` r
 maxdeaths <- deaths %>% group_by(
